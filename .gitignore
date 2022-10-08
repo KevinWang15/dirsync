@@ -1,0 +1,5 @@
+.idea
+/.dirmap
+/dirsync
+/visualize-diff/node_modules
+/visualize-diff/build

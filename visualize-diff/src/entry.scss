@@ -1,0 +1,67 @@
+$colorCopy: rgba(173, 255, 47);
+$colorDelete: rgba(255, 47, 127);
+$colorOverwrite: rgba(141, 47, 255);
+
+.entry {
+  .row {
+    position: relative;
+    padding: 2px;
+    cursor: pointer;
+    border: 1px solid #DDD;
+    margin-top: -1px;
+
+    &:hover {
+      font-weight: bold;
+    }
+
+    &.verb-copy {
+      background: transparentize($colorCopy, 0.7);
+    }
+
+    &.verb-delete {
+      background: transparentize($colorDelete, 0.7);
+    }
+
+    &.verb-overwrite {
+      background: transparentize($colorOverwrite, 0.7);
+    }
+  }
+
+  .children-stats {
+    opacity: 0.6;
+    position: absolute;
+    right: 10px;
+    font-size: 12px;
+
+    span {
+      margin-right: 6px;
+
+      text-align: center;
+      font-weight: bold;
+
+      &.copy {
+        color: $colorCopy;
+      }
+
+      &.delete {
+        color: $colorDelete;
+      }
+
+      &.overwrite {
+        color: $colorOverwrite;
+      }
+    }
+  }
+
+  .expanded {
+    padding-left: 8px;
+    padding-right: 2px;
+  }
+
+  .verb {
+    opacity: 0.6;
+    position: absolute;
+    right: 10px;
+    font-size: 12px;
+  }
+}
