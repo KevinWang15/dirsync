@@ -28,7 +28,12 @@ An off-site data backup solution that is efficient, incremental and can prevent 
 
 # Diff visualization
 
-Pipe the output of `sync --dry-run` to `./visualize-diff/visualize.js` to show the diffs in an interactive UI.
+```
+cd visualize-diff
+make
+```
+
+Then pipe the output of `sync --dry-run` to `./visualize-diff/visualize.js` to show the diffs in an interactive UI.
 
 For example:
 
