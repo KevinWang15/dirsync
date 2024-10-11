@@ -9,6 +9,7 @@ import (
 	"github.com/gammazero/workerpool"
 	"github.com/spf13/cobra"
 	"io"
+	"log"
 	"os"
 	"path"
 	"regexp"
@@ -137,7 +138,11 @@ func executeTask(task types.Task) {
 	case types.OperationDelete:
 		err := os.Remove(targetPath)
 		if err != nil {
-			panic(err)
+			if os.IsNotExist(err) {
+				log.Printf("File to delete does not exist: %s. Skipping.", targetPath)
+			} else {
+				panic(err)
+			}
 		}
 	case types.OperationOverwrite:
 		fallthrough
@@ -153,6 +158,10 @@ func executeTask(task types.Task) {
 func copyFile(source, target string) {
 	sourceFile, err := os.Open(source)
 	if err != nil {
+		if os.IsNotExist(err) {
+			log.Printf("Source file %s does not exist. Skipping.", source)
+			return
+		}
 		panic(err)
 	}
 	defer func() {
